@@ -1,0 +1,56 @@
+name: Release extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate version and run unit tests
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          version = json.loads(Path('extension/manifest.json').read_text())['version']
+          assert os.environ['RELEASE_TAG'] == f'v{version}', 'Tag must match manifest version'
+          assert Path(f'docs/releases/v{version}.md').is_file(), 'Release notes are required'
+          PY
+          npm test
+      - name: Build extension archive
+        run: npm run build
+      - name: Publish GitHub release with installable archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          RELEASE_VERSION="${RELEASE_TAG#v}"
+          RELEASE_ARCHIVE="dist/funpay-helper-${RELEASE_VERSION}.zip"
+          RELEASE_NOTES="docs/releases/${RELEASE_TAG}.md"
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" "$RELEASE_ARCHIVE" --clobber
+          else
+            gh release create "$RELEASE_TAG" "$RELEASE_ARCHIVE" \
+              --verify-tag \
+              --title "FunPay Helper ${RELEASE_TAG}" \
+              --notes-file "$RELEASE_NOTES"
+          fi

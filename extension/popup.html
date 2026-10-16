@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FunPay Helper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="https://funpay.com/" target="_blank" rel="noreferrer"><span class="logo">f<span>h</span></span><span>funpay<span class="brand-light"> helper</span></span></a><span class="version">v0.1</span></header>
+  <main>
+    <div class="eyebrow"><span class="live-dot"></span> ВАШ ЛИЧНЫЙ АССИСТЕНТ</div>
+    <h1>Меньше рутины.<br><span>Больше возможностей.</span></h1>
+    <p class="intro">Настройте FunPay под себя.</p>
+    <nav class="tabs" aria-label="Разделы"><button class="active" data-tab="workspace" aria-selected="true">Рабочее место</button><button data-tab="answers" aria-selected="false">Ответы</button><button data-tab="buyers" aria-selected="false">Покупатели <span id="buyer-count">0</span></button></nav>
+    <section id="workspace" class="tab-panel">
+      <div class="section-heading">ВАШ СТИЛЬ <span>01</span></div>
+      <div class="card">
+        <label class="setting"><span class="setting-icon purple">☾</span><span class="setting-copy"><strong>Тёмная тема</strong><small>Мягкие цвета для долгих вечеров</small></span><input type="checkbox" id="dark" class="switch" aria-label="Тёмная тема"></label>
+        <div class="divider"></div>
+        <label class="setting"><span class="setting-icon peach">✧</span><span class="setting-copy"><strong>Живой интерфейс</strong><small>Плавные переходы и лёгкие анимации</small></span><input type="checkbox" id="motion" class="switch" aria-label="Анимации"></label>
+      </div>
+      <div class="theme-preview"><div class="preview-bar"><i></i><i></i><i></i><span>ваш новый FunPay</span></div><div class="preview-content"><div class="preview-avatar">A</div><div class="preview-lines"><b>Alex • Покупатель</b><span>Спасибо, всё получил!</span></div><span class="preview-tag">✓ Надёжный</span></div><div class="preview-reply">Рад помочь! До новых встреч <span>↗</span></div></div>
+      <div class="section-heading">БЕЗ ЯЗЫКОВЫХ ГРАНИЦ <span>02</span></div>
+      <div class="card translate-card"><span class="setting-icon mint">文</span><div class="setting-copy"><strong>Перевод описаний</strong><small>Язык для кнопки перевода на сайте</small></div><select id="language" aria-label="Язык перевода"></select></div>
+      <p class="hint">По нажатию описание откроется в Google Translate. Текст передаётся только при вашем действии.</p>
+      <div class="tip"><span>↗</span><p>Откройте FunPay и нажмите <strong>Helper</strong> в правом нижнем углу — инструменты всегда под рукой.</p></div>
+    </section>
+    <section id="answers" class="tab-panel" hidden>
+      <div class="section-heading">БЫСТРЫЕ ОТВЕТЫ <span>01</span></div>
+      <div class="card form-card"><label for="buyerReply">Ответ покупателю</label><p class="hint">Кнопка в чате вставит этот текст. Автоотправка включается отдельно для открытого чата на сайте.</p><textarea id="buyerReply" maxlength="2000" rows="4"></textarea><span class="variable">{buyer} → имя покупателя</span></div>
+      <div class="card form-card"><label for="reviewReply">Ответ на отзыв</label><textarea id="reviewReply" maxlength="2000" rows="4"></textarea><label class="inline-toggle"><input type="checkbox" id="reviewAutofill"> Вставлять шаблон при открытии формы ответа</label><p class="hint">Проверьте текст и отправьте его кнопкой FunPay. Helper не публикует ответы на отзывы автоматически.</p></div>
+      <div class="tip"><span>✦</span><p>Автоответ в чате работает, пока вкладка открыта и видна. Не чаще одного ответа в минуту.</p></div>
+    </section>
+    <section id="buyers" class="tab-panel" hidden>
+      <div class="section-heading">ВАША ПАМЯТЬ О ЛЮДЯХ <span>01</span></div>
+      <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Имя, ID или заметка…" aria-label="Поиск покупателей"></label>
+      <div id="buyers-list"></div>
+      <div class="tip"><span>♡</span><p>Откройте профиль или чат и нажмите «Метка покупателя» в Helper. Метки видите только вы.</p></div>
+    </section>
+  </main>
+  <footer><span><i class="live-dot"></i> Всё хранится в вашем браузере</span><output id="save-status" aria-live="polite">Сохранено</output></footer>
+  <script src="shared.js"></script><script src="popup.js"></script>
+</body>
+</html>

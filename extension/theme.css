@@ -1,0 +1,28 @@
+/* Scoped FunPay overrides. Does not affect the extension's Shadow DOM. */
+html.fph-dark{color-scheme:dark;--fph-bg:#111319;--fph-card:#1b1e27;--fph-line:#303443;--fph-text:#e2e3ed;--fph-muted:#a2a6b8;--fph-accent:#c3a8fa}
+html.fph-dark body,html.fph-dark .wrapper,html.fph-dark .page-content,html.fph-dark .container-content{background:var(--fph-bg)!important;color:var(--fph-text)!important}
+html.fph-dark .navbar,html.fph-dark .navbar-default,html.fph-dark .dropdown-menu,html.fph-dark .panel,html.fph-dark .modal-content,html.fph-dark .chat,html.fph-dark .chat-header,html.fph-dark .chat-form,html.fph-dark .chat-message-list,html.fph-dark .chat-msg-list,html.fph-dark .chat-contacts,html.fph-dark .tc-item,html.fph-dark .offer,html.fph-dark .review-container,html.fph-dark .review-item,html.fph-dark .well,html.fph-dark .table{background-color:var(--fph-card)!important;border-color:var(--fph-line)!important;color:var(--fph-text)!important}
+html.fph-dark .form-control,html.fph-dark textarea,html.fph-dark input:not([type=checkbox]):not([type=radio]):not([type=submit]),html.fph-dark select{background-color:#131620!important;border-color:#3d4255!important;color:var(--fph-text)!important}
+html.fph-dark input::placeholder,html.fph-dark textarea::placeholder{color:#9198ad!important}
+html.fph-dark h1,html.fph-dark h2,html.fph-dark h3,html.fph-dark h4,html.fph-dark h5,html.fph-dark .chat-msg-text,html.fph-dark .media-user-name,html.fph-dark .tc-desc-text,html.fph-dark .lot-desc-text{color:var(--fph-text)!important}
+html.fph-dark a:not(.btn):not(.fph-badge){color:var(--fph-accent)}
+html.fph-dark .text-muted,html.fph-dark .help-block,html.fph-dark .chat-msg-date,html.fph-dark .tc-desc-text small{color:var(--fph-muted)!important}
+html.fph-dark .chat-contact,html.fph-dark .tc-header,html.fph-dark .panel-heading,html.fph-dark .panel-footer,html.fph-dark .modal-header,html.fph-dark .modal-footer,html.fph-dark td,html.fph-dark th{border-color:var(--fph-line)!important;background-color:transparent;color:var(--fph-text)}
+html.fph-dark .chat-contact.active,html.fph-dark .chat-contact:hover,html.fph-dark .dropdown-menu>li>a:hover,html.fph-dark .tc-item:hover{background-color:#2a263b!important}
+html.fph-dark .alert-warning{background:#393021!important;color:#f4d5a1!important;border-color:#615039!important}
+html.fph-dark .alert-danger{background:#3c242b!important;color:#ffbec8!important;border-color:#6c3947!important}
+html.fph-dark .alert-success{background:#1d352e!important;color:#b4eed2!important;border-color:#365c4c!important}
+html.fph-dark .alert-info{background:#222e43!important;color:#c1d9ff!important;border-color:#3d5277!important}
+html.fph-motion .btn,html.fph-motion .tc-item,html.fph-motion .chat-contact{transition:background-color .18s ease,box-shadow .18s ease}
+html.fph-motion #fph-root{animation:fph-arrive .35s ease-out}
+@keyframes fph-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fph-badge{display:inline-flex!important;align-items:center;vertical-align:middle;margin:2px 5px;padding:2px 6px;border-radius:5px;border:1px solid #73829044;background:#e9edf0;color:#435463;font:10px/1.5 system-ui,sans-serif;cursor:pointer;max-width:150px;white-space:nowrap}
+.fph-badge[data-tag=good]{background:#dff2e7;color:#296443;border-color:#8ac4a0}
+.fph-badge[data-tag=bad]{background:#ffebdb;color:#925321;border-color:#e4ba97}
+html.fph-dark .fph-badge{background:#2d2e3c;color:#c4bdd6;border-color:#62596e}
+html.fph-dark .fph-badge[data-tag=good]{background:#233c32;color:#a3dfbe;border-color:#3a6953}
+html.fph-dark .fph-badge[data-tag=bad]{background:#402e27;color:#efbf9c;border-color:#81573c}
+.fph-ignored{display:none!important}
+.fph-ignore-placeholder{padding:9px 15px;margin:4px 0;font:11px/1.5 system-ui,sans-serif;color:#8b829b}
+.fph-ignore-placeholder button{border:1px dashed #9383a777;background:transparent;color:inherit;border-radius:7px;padding:7px 12px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){html.fph-motion *,html.fph-motion #fph-root{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

@@ -1,0 +1,12 @@
+{
+  "name": "funpay-helper",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Локальный помощник для FunPay — расширение Manifest V3",
+  "scripts": {
+    "test": "node tests/core.test.cjs",
+    "test:browser": "python tests/browser.py",
+    "build": "python scripts/package.py"
+  },
+  "engines": { "node": ">=18" }
+}

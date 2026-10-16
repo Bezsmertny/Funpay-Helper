@@ -1,0 +1,2 @@
+# Only for the optional Chromium DOM test driver; not needed by the extension.
+websockets==16.0
